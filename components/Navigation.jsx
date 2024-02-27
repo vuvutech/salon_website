@@ -5,7 +5,6 @@ export const links = [
 	{ id: 2, href: "/about", name: "About", label: "about" },
 	{ id: 2, href: "/services", name: "Services", label: "services" },
 	{ id: 3, href: "/booking", name: "Booking", label: "booking" },
-	{ id: 4, href: "/gallery", name: "Gallery", label: "gallery" },
 	{ id: 5, href: "/gift", name: "GiftCard", label: "gift" },
 	{ id: 6, href: "/contact", name: "Contact", label: "contact" },
 ];

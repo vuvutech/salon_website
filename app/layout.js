@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Footer2 from "@/components/Footer2";
 import {NextUIProvider} from "@nextui-org/react";
 
 
@@ -17,9 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="en"  data-theme="light">
       <body className={inter.className}>
         <Navigation />
-        <div className='p-2'>
+     
        {children}
-       </div>
+      
        <Footer />
       </body>
     </html>

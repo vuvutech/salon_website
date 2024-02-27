@@ -1,198 +1,46 @@
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
+import Jumbotron from "@/components/Jumbotron";
+import JumbotronFlipped from "@/components/JumbotronFlipped";
 
 const About = () => {
   return (
     <>
-      <section className="">
-        <>
-          {/* Features */}
-          <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
-            {/* Grid */}
-            <div className="md:grid md:grid-cols-2 md:items-center md:gap-12">
-              <div>
-                <img
-                  className="rounded-xl"
-                  src="https://images.unsplash.com/photo-1648737963503-1a26da876aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&h=900&q=80"
-                  alt="Image Description"
-                />
-              </div>
-              {/* End Col */}
+      <Jumbotron
+        title="Beautiful Mission"
+        description="Mission Statement"
+        paragraph="It is the mission of every employee to insure that each time you visit our salon we will exceed your expectations in Customer service, Professionalism, and Quality and Consistency of services."
+        images={{
+          background: "./jumbotron-bg2.jpg",
+          overlay: "./jumbotron-bg.png",
+          column1:
+		  "../woman5.webp", //// Add actual image URL
+          column2:
+		  "../woman2.png", //// Add actual image URL
+          column3:
+		  "../woman3.webp", //// Add actual image URL
+        }}
+      />
 
-              <div className="mt-5 sm:mt-10 lg:mt-0">
-                <div className="space-y-6 sm:space-y-8">
-                  {/* Title */}
-                  <div className="space-y-2 md:space-y-4">
-                    <h5 className="font-bold uppercase text-slate-900">
-                      Telling our Story
-                    </h5>
-                    <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
-                      We tackle the challenges start-ups face
-                    </h2>
-                    <p className="text-gray-500">
-                      Besides working with start-up enterprises as a partner for
-                      digitalization, we have built enterprise products for
-                      common pain points that we have encountered in various
-                      products and projects.
-                    </p>
-                  </div>
-                  {/* End Title */}
 
-                  {/* List */}
-                  <ul role="list" className="space-y-2 sm:space-y-4">
-                    <li className="flex space-x-3">
-                      <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
-                        <svg
-                          className="flex-shrink-0 size-3.5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>
-
-                      <span className="text-sm sm:text-base text-gray-500">
-                        <span className="font-bold">Easy & fast</span> designing
-                      </span>
-                    </li>
-
-                    <li className="flex space-x-3">
-                      <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
-                        <svg
-                          className="flex-shrink-0 size-3.5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>
-
-                      <span className="text-sm sm:text-base text-gray-500">
-                        Powerful <span className="font-bold">features</span>
-                      </span>
-                    </li>
-
-                    <li className="flex space-x-3">
-                      <span className="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
-                        <svg
-                          className="flex-shrink-0 size-3.5"
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>
-
-                      <span className="text-sm sm:text-base text-gray-500">
-                        User Experience Design
-                      </span>
-                    </li>
-                  </ul>
-                  {/* End List */}
-                </div>
-              </div>
-              {/* End Col */}
-            </div>
-            {/* End Grid */}
-          </div>
-          {/* End Features */}
-        </>
-      </section>
-      {/* <header className="">
-				<div
-					className='w-full bg-center bg-cover h-[28rem] rounded-3xl'
-					style={{ backgroundImage: "url('./johannesburg.jpg')" }}>
-					<div className='flex items-center justify-center w-full h-full bg-gray-900/40 rounded-3xl'>
-						<div className='text-center max-w-4xl'>
-							<h1 className='block text-2xl font-bold  sm:text-4xl lg:text-6xl text-white dark:text-white'>
-								Premier Hair Salon in{" "}
-								<span className='text-yellow-600'>
-									Johannesburg
-								</span>
-							</h1>
-							<div className='flex justify-center '>
-								<p className='mt-3 text-2xl text-white dark:text-gray-400'>
-									Since our launch in 2013{" "}
-									<span className='text-teal-600'>
-										Elsie Hair Salon
-									</span>{" "}
-									focus has been to provide a great range of
-									hair and beauty services in modern and
-									relaxed salon environments. With salon based
-									in Johannesburg Alberton, Elsie Hair Salon
-									offers a refreshing approach to hair and
-									beauty.
-								</p>
-							</div>
-
-							<div>
-							<button className="btn btn-wide">
-								Book Your Experience
-							</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header> */}
+     
 
       <section className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="w-full space-y-4">
             <h2 className="text-3xl text-gray-800 font-bold lg:text-4xl dark:text-white">
-              Mission Statement
+              Vision Statement
             </h2>
-            <p className="mt-3 text-gray-800 dark:text-gray-400">
+            {/* <p className="mt-3 text-gray-800 dark:text-gray-400">
               It is the mission of every employee to insure that each time you
               visit our salon we will exceed your expectations in Customer
               service, Professionalism, and Quality and Consistency of services.
-            </p>
-            <p className="mt-5">
-              <Link
-                className="inline-flex items-center gap-x-1 font-medium text-blue-600 dark:text-blue-500"
-                href="/contact"
-              >
-                Contact sales to learn more
-                <svg
-                  className="flex-shrink-0 size-4 transition ease-in-out group-hover:translate-x-1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </Link>
-            </p>
+            </p> */}
 
-            <div className="grid grid-cols-2 gap-4">
+
+            {/* <div className="grid grid-cols-2 gap-4">
               <article className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
                 <a target="_blank">
                   <div className="relative flex items-end overflow-hidden rounded-xl">
@@ -249,7 +97,7 @@ const About = () => {
                   </div>
                 </a>
               </article>
-            </div>
+            </div> */}
             <div>
               <p>
                 Elsie Hair Salon has earned its reputation as the heart of East
@@ -404,6 +252,22 @@ const About = () => {
         </div>
         {/* End Grid */}
       </section>
+
+	  <JumbotronFlipped
+        title="Our Vision"
+        description="Our Vision Statement"
+        paragraph="It is the mission of every employee to insure that each time you visit our salon we will exceed your expectations in Customer service, Professionalism, and Quality and Consistency of services."
+        images={{
+          background: "./jumbotron-bg2.jpg",
+          overlay: "./shape-08.png",
+          column1:
+		  "../woman2-gray1.png", //// Add actual image URL
+          column2:
+		  "../woman2-gray1.png", //// Add actual image URL
+          column3:
+            "../woman2-gray1.png", //// Add actual image URL
+        }}
+      />
     </>
   );
 };
