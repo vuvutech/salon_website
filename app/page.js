@@ -49,7 +49,7 @@ export default function Home() {
       <div className="py-16">
         <div className="xl:container m-auto px-6 text-gray-500 md:px-12">
           <div className="space-y-3">
-            <h2 className="mt-4 text-2xl font-bold text-gray-700 dark:text-white md:text-4xl">
+            <h2 className="mt-4 text-2xl font-bold text-gray-700 dark:text-teal-950 md:text-4xl">
             Discover Beauty Excellence: Unveiling <br /> a Spectrum of Tailored Salon Services
             </h2>
             <div className="max-w-7xl">

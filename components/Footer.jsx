@@ -14,10 +14,10 @@ const Footer = () => {
   return (
     <div>
       { pathname === "/404" ? null : <FooterCarousel />}
-      <footer className="bg-gray-100 dark:bg-gray-950 lg:grid lg:grid-cols-5 relative">
+      <footer className="bg-gray-100 dark:bg-teal-950 lg:grid lg:grid-cols-5 relative">
         <div className="relative block h-32 lg:col-span-2 lg:h-full">
           <Image
-            className="absolute inset-0 h-full w-full object-cover dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
+            className="absolute inset-0 h-full w-full object-cover"
             src="/hair-salon-1.jpg"
             alt="Elsie Hair Salon"
             width={1548}
@@ -72,7 +72,7 @@ const Footer = () => {
                     href="https://www.instagram.com/elsiehairsalon"
                     rel="noreferrer"
                     target="_blank"
-                    className="text-gray-700 transition hover:opacity-75"
+                    className="text-gray-700 dark:text-white transition hover:opacity-75"
                   >
                     <span className="sr-only">Instagram</span>
 
@@ -171,11 +171,11 @@ const Footer = () => {
 
           <div className="mt-12 border-t border-gray-100 pt-12">
             <div className="sm:flex sm:items-center sm:justify-between">
-              <ul className="flex flex-wrap gap-4 text-xs">
+              <ul className="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-white ">
                 <li>
                   <Link
                     href="/terms"
-                    className="text-gray-500 transition hover:opacity-75"
+                    className="transition hover:opacity-75"
                   >
                     {" "}
                     Terms & Conditions{" "}
@@ -185,7 +185,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/privacy"
-                    className="text-gray-500 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Privacy Policy{" "}
@@ -195,7 +195,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/cookies"
-                    className="text-gray-500 transition hover:opacity-75"
+                    className=" transition hover:opacity-75"
                   >
                     {" "}
                     Cookies{" "}
@@ -203,7 +203,7 @@ const Footer = () => {
                 </li>
               </ul>
 
-              <p className="mt-8 text-xs text-gray-500  dark:text-gray-200 sm:mt-0">
+              <p className="mt-8 text-xs text-gray-500 dark:text-white  sm:mt-0">
                 &copy; {currentYear}. Elsie Hair Salon &#8212; All rights
                 reserved.
               </p>

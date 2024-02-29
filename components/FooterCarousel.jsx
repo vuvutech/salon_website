@@ -29,7 +29,7 @@ const FooterCarousel = () => {
         autoPlay
         autoPlaySpeed={6000}
         centerMode={false}
-        className="bg-transparent dark:bg-slate-900 "
+        className="bg-transparent dark:bg-teal-950 "
         containerClass="container-with-dots"
         dotListClass=""
         draggable

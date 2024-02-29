@@ -4,7 +4,7 @@ const Jumbotron = ({ title, description, paragraph, images }) => {
   return (
     <section className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto relative bg-teal-100 dark:bg-teal-950">
       <div
-        className="lg:grid lg:grid-cols-12 lg:gap-2 lg:items-center border rounded-3xl p-4 md:p-12 z-10 relative w-full overflow-hidden  object-center object-cover  "
+        className="lg:grid lg:grid-cols-12 lg:gap-2 lg:items-center border rounded-3xl dark:bg-none p-4 md:p-12 z-10 relative w-full overflow-hidden  object-center object-cover  "
         style={{ backgroundImage: `url(${images.background})` }}
       >
         <div
@@ -44,11 +44,11 @@ const Jumbotron = ({ title, description, paragraph, images }) => {
           </div>
         </div>
 
-        <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-5">
+        <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-5 z-20 md:py-16 ">
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-2 md:space-y-4">
               <h5 className="uppercase font-bold">{title ?? ''}</h5>
-              <h2 className="font-bold text-3xl lg:text-4xl text-pink-500 dark:text-white">
+              <h2 className="font-bold text-3xl lg:text-4xl text-pink-500 dark:text-teal-900">
                 {description ?? ''}
               </h2>
               <p className="text-gray-500">{paragraph ?? ''}</p>

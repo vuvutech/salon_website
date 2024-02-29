@@ -26,11 +26,11 @@ const About = () => {
 
      
 
-      <section className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <section className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto dsark:bg-teal-800">
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="w-full space-y-4">
-            <h2 className="text-3xl text-gray-800 font-bold lg:text-4xl dark:text-white">
+            <h2 className="text-3xl text-gray-800 font-bold lg:text-4xl dark:text-teal-900">
               Vision Statement
             </h2>
             {/* <p className="mt-3 text-gray-800 dark:text-gray-400">
@@ -121,9 +121,9 @@ const About = () => {
             {/* Icon Block */}
             <div className="flex">
               {/* Icon */}
-              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-teal-500">
                 <svg
-                  classname="flex-shrink-0 size-5"
+                  className="flex-shrink-0 size-5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -139,7 +139,7 @@ const About = () => {
                 </svg>
               </span>
               <div className="ms-5 sm:ms-8">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-teal-500">
                   EMPLOYEE EXPECTATIONS
                 </h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
@@ -153,9 +153,9 @@ const About = () => {
             {/* Icon Block */}
             <div className="flex">
               {/* Icon */}
-              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-teal-500">
                 <svg
-                  classname="flex-shrink-0 size-5"
+                  className="flex-shrink-0 size-5"
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
                   height="24"
@@ -171,7 +171,7 @@ const About = () => {
                 </svg>
               </span>
               <div className="ms-5 sm:ms-8">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-teal-500">
                   EXCELLENCE THROUGH EDUCATION
                 </h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
@@ -186,7 +186,7 @@ const About = () => {
             {/* Icon Block */}
             <div className="flex">
               {/* Icon */}
-              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-teal-500">
                 <svg
                   className="flex-shrink-0 size-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +204,7 @@ const About = () => {
                 </svg>
               </span>
               <div className="ms-5 sm:ms-8">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-teal-500">
                   CUSTOMER SERVICE
                 </h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
@@ -216,7 +216,7 @@ const About = () => {
             </div>
             <div className="flex">
               {/* Icon */}
-              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-gray-200">
+              <span className="flex-shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto dark:bg-slate-900 dark:border-gray-700 dark:text-teal-500">
                 <svg
                   className="flex-shrink-0 size-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +234,7 @@ const About = () => {
                 </svg>
               </span>
               <div className="ms-5 sm:ms-8">
-                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-200">
+                <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-teal-500">
                   THE ULTIMATE CUSTOMER CARE
                 </h3>
                 <p className="mt-1 text-gray-600 dark:text-gray-400">
@@ -254,7 +254,7 @@ const About = () => {
       </section>
 
 	  <JumbotronFlipped
-        title="Our Vision"
+        title="The Elsie Vision"
         description="Our Vision Statement"
         paragraph="It is the mission of every employee to insure that each time you visit our salon we will exceed your expectations in Customer service, Professionalism, and Quality and Consistency of services."
         images={{

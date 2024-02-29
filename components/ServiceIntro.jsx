@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const ServiceIntro = ({ title, description, imageUrl, linkUrl }) => {
   return (
-    <div className="group relative bg-white dark:bg-gray-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
+    <div className="group relative bg-white dark:bg-teal-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-teal-600/10">
       <div className="relative space-y-8 py-12 p-8">
         <img
           src={imageUrl}
@@ -15,10 +15,10 @@ const ServiceIntro = ({ title, description, imageUrl, linkUrl }) => {
         />
 
         <div className="space-y-2">
-          <h5 className="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-primary">
+          <h5 className="text-xl font-medium text-teal-700 dark:text-white transition group-hover:text-primary">
             {title}
           </h5>
-          <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 ">
+          <p className="text-sm text-teal-600 dark:text-teal-300 line-clamp-3 ">
             {description}
           </p>
         </div>

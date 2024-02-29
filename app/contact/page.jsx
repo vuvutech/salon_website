@@ -21,10 +21,10 @@ const Contact = () => {
         />
       </section>
 
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 h-full relative">
+      <section className="grid grid-cols-1 md:grid-cols-2 md:gap-4 h-full relative">
         <div className="block">
-          <div className="block items-center h-full text-white font-bold py-4">
-            <div className="grid grid-cols-8 gap-x-0 h-full">
+          <div className="block items-center h-full text-white font-bold md:py-4">
+            <div className="grid grid-cols-1 md:grid-cols-8 gap-x-0 h-full">
               <div className="hidden col-span-2  bg-teal-950 md:grid place-items-center">
                 <MapPin size={78} />
               </div>

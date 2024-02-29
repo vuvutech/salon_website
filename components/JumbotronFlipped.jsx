@@ -12,11 +12,11 @@ const JumbotronFlipped = ({ title, description, paragraph, images }) => {
           style={{ backgroundImage: `url(${images.overlay})` }}
         ></div>
 
-        <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-5">
+        <div className="mt-5 sm:mt-10 lg:mt-0 lg:col-span-5 z-20 md:py-16 ">
           <div className="space-y-6 sm:space-y-8">
             <div className="space-y-2 md:space-y-4">
               <h5 className="uppercase font-bold">{title ?? ""}</h5>
-              <h2 className="font-bold text-3xl lg:text-4xl text-pink-500 dark:text-white">
+              <h2 className="font-bold text-3xl lg:text-4xl text-pink-500 dark:text-teal-900">
                 {description ?? ""}
               </h2>
               <p className="text-gray-500">{paragraph ?? ""}</p>

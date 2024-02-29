@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 *{
-    font-family: "poppins", Verdana, Geneva, Tahoma, sans-serif;
+    font-family: "montserrat", Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .loader {

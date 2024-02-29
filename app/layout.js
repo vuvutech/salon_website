@@ -3,8 +3,8 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Footer2 from "@/components/Footer2";
-import {NextUIProvider} from "@nextui-org/react";
-
+import { NextUIProvider } from "@nextui-org/react";
+import { ThemeModeScript, DarkThemeToggle, Flowbite } from "flowbite-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,14 +15,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en"  data-theme="light">
-      <body className={inter.className}>
-        <Navigation />
-     
-       {children}
-      
-       <Footer />
-      </body>
-    </html>
+    <Flowbite>
+      <html lang="en">
+        <head>
+          <ThemeModeScript />
+        </head>
+        <body className={inter.className}>
+          <Navigation />
+
+          {children}
+
+          <Footer />
+        </body>
+      </html>
+    </Flowbite>
   );
 }

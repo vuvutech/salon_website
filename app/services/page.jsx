@@ -30,9 +30,8 @@ const Services = () => {
           </h2>
 
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            The product can personalize user experiences by understanding
-            individual preferences and tailoring recommendations or content
-            based on user behavior and historical data.
+
+          Unleash your hair's potential! Our salon caters to all your needs, offering haircuts, styling, treatments, and essential care – everything for healthy, beautiful hair.
           </p>
         </div>
 
@@ -40,19 +39,19 @@ const Services = () => {
 
           <ServiceItem
             title="General Hair Services"
-            description="Description for your service."
+            description="More than just a cut. We offer a variety of services including scalp treatments, hair extensions, and styling consultations."
           />
           <ServiceItem
             title="Hair Treatment"
-            description="Description for your service."
+            description="Revitalize and repair. Deep treatments address dryness, damage, and thinning, leaving your hair healthy and vibrant."
           />
           <ServiceItem
             title="Hair Styling"
-            description="Description for your service."
+            description="Create your perfect look. From sleek blowouts to intricate updos, our stylists will craft an ideal style for any occasion."
           />
           <ServiceItem
             title="Standard Hair Care"
-            description="Description for your service."
+            description="Essential maintenance made easy. Our experienced stylists offer precision haircuts, trims, and washes to maintain healthy hair."
           />
 
         </div>
