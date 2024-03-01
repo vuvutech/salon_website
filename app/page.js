@@ -62,23 +62,23 @@ export default function Home() {
             
             {/* Service intro */}
            { <ServiceIntro
-              title="First feature"
-              description="Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
+              title="General Hair Services"
+              description="More than just a cut. We offer a variety of services including scalp treatments, hair extensions, and styling consultations.."
               imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
             />}
            { <ServiceIntro
-              title="First feature"
-              description="Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
+              title="Hair Treatment"
+              description="Revitalize and repair. Deep treatments address dryness, damage, and thinning, leaving your hair healthy and vibrant."
               imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
             />}
            { <ServiceIntro
-              title="First feature"
-              description="Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
+              title="Hair Styling"
+              description="Create your perfect look. From sleek blowouts to intricate updos, our stylists will craft an ideal style for any occasion."
               imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
             />}
            { <ServiceIntro
-              title="First feature"
-              description="Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
+              title="Standard Hair Care"
+              description="Essential maintenance made easy. Our experienced stylists offer precision haircuts, trims, and washes to maintain healthy hair."
               imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
             />}
           </div>
