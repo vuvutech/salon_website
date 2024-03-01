@@ -101,7 +101,7 @@ const Navigation = () => {
               outline
               pill
               size="sm"
-              className="flex justify-between items-center"
+              className="flex justify-between items-center "
               onClick={() => setOpenModal(true)}
             >
               <span className="">Bookings</span>
@@ -199,7 +199,7 @@ const Navigation = () => {
         {links.map(
           (link) =>
             link.href !== "/booking" && (
-              <Navbar.Link key={link.id} href={link.href}>
+              <Navbar.Link key={link.id} href={link.href} className="dark:text-white dark:hover:text-teal-300 font-bold" >
                 {link.name}
               </Navbar.Link>
             )

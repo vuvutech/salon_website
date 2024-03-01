@@ -1,27 +1,26 @@
-"use client"
+"use client";
 import Link from "next/link";
 import Image from "next/image";
 import React from "react";
-import {useEffect,useState } from 'react'
-import { usePathname } from 'next/navigation'
+import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { serviceData as services } from "./ServiceList";
 import FooterCarousel from "./FooterCarousel";
 
 const Footer = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   return (
     <div>
-      { pathname === "/404" ? null : <FooterCarousel />}
+      {pathname === "/404" ? null : <FooterCarousel />}
       <footer className="bg-gray-100 dark:bg-teal-950 lg:grid lg:grid-cols-5 relative">
         <div className="relative block h-32 lg:col-span-2 lg:h-full">
           <Image
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover  "
             src="/hair-salon-1.jpg"
             alt="Elsie Hair Salon"
-            width={1548}
-            height={80}
+            fill="true"
             priority
           />
           {/* <img
@@ -169,14 +168,11 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="mt-12 border-t border-gray-100 pt-12">
+          <div className="mt-12 border-t dark:border-teal-700/25 border-teal-200/50 pt-12">
             <div className="sm:flex sm:items-center sm:justify-between">
               <ul className="flex flex-wrap gap-4 text-xs text-gray-500 dark:text-white ">
                 <li>
-                  <Link
-                    href="/terms"
-                    className="transition hover:opacity-75"
-                  >
+                  <Link href="/terms" className="transition hover:opacity-75">
                     {" "}
                     Terms & Conditions{" "}
                   </Link>

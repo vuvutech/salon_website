@@ -1,19 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 
 
 const ServiceIntro = ({ title, description, imageUrl, linkUrl }) => {
   return (
     <div className="group relative bg-white dark:bg-teal-950 transition hover:z-[1] hover:shadow-2xl hover:shadow-teal-600/10">
       <div className="relative space-y-8 py-12 p-8">
-      <div className='w-24 h-24 bg-teal-100/50 rounded-full grid place-items-center place-content-center'>
-      <img
-          src={imageUrl}
-          className="w-20"
-          width="912"
-          height="912"
-          alt="service illustration"
-        />
+      <div className='w-24 h-24 bg-teal-100/90 rounded-full grid place-items-center place-content-center relative'>
+      <Image className="p-2" src={imageUrl} alt={title} fill  />
+        
       </div>
 
         <div className="space-y-2">
