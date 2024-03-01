@@ -1,7 +1,7 @@
-"use client"
-import ReCAPTCHA from "react-google-recaptcha"
-import { verifyCaptcha } from "./ServerActions"
-import React, { useRef, useState } from "react"
+"use client";
+import ReCAPTCHA from "react-google-recaptcha";
+import { verifyCaptcha } from "./ServerActions";
+import React, { useRef, useState } from "react";
 
 import {
   Button,
@@ -10,9 +10,9 @@ import {
   Modal,
   TextInput,
   Datepicker,
-  DarkThemeToggle
-} from "flowbite-react"
-import { HiOutlineArrowRight } from "react-icons/hi"
+  DarkThemeToggle,
+} from "flowbite-react";
+import { HiOutlineArrowRight } from "react-icons/hi";
 
 // Navigation object
 //-----------------------------------------------------------
@@ -22,40 +22,71 @@ export const links = [
   { id: 3, href: "/services", name: "Services", label: "services" },
   { id: 4, href: "/booking", name: "Booking", label: "booking" },
   { id: 5, href: "/gift", name: "GiftCard", label: "gift" },
-  { id: 6, href: "/contact", name: "Contact", label: "contact" }
-]
+  { id: 6, href: "/contact", name: "Contact", label: "contact" },
+];
 
 const Navigation = () => {
-  const recaptchaRef = useRef(null)
-  const [isVerified, setIsverified] = useState(false)
+  const recaptchaRef = useRef(null);
+  const [isVerified, setIsverified] = useState(false);
 
   async function handleCaptchaSubmission(token) {
     // Server function to verify captcha
     await verifyCaptcha(token)
       .then(() => setIsverified(true))
-      .catch(() => setIsverified(false))
+      .catch(() => setIsverified(false));
   }
 
-  const [openModal, setOpenModal] = useState(false)
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [number, setNumber] = useState("")
-  const [date, setDate] = useState("")
+  const [openModal, setOpenModal] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+  const [date, setDate] = useState("");
 
   function onCloseModal() {
-    setOpenModal(false)
-    setEmail("")
-    setDate("")
-    setName("")
-    setNumber("")
+    setOpenModal(false);
+    setEmail("");
+    setDate("");
+    setName("");
+    setNumber("");
   }
-  function onSubmit() {
-    setOpenModal(false)
-    setEmail("")
-    setDate("")
-    setName("")
-    setNumber("")
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Ensure all required fields are present before sending data
+    if (!name || !email || !number || !date) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+
+    // Replace with your actual API endpoint and validation logic
+    const formData = {
+      name,
+      email,
+      phone: number, // Assuming "number" should be "phone"
+      date,
+      details: "", // Add details if needed
+    };
+
+    try {
+      const response = await fetch("/api/booking", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Booking submitted successfully!");
+        onCloseModal();
+      } else {
+        const errorData = await response.json(); // Parse error message
+        alert(`Error submitting booking: ${errorData.message}`); // Display specific error
+      }
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      alert("An unexpected error occurred. Please try again later.");
+    }
+  };
+
   return (
     <Navbar fluid>
       <Navbar.Brand href="/">
@@ -101,7 +132,7 @@ const Navigation = () => {
                       id="name"
                       placeholder="Your Name"
                       value={name}
-                      onChange={event => setName(event.target.value)}
+                      onChange={(event) => setName(event.target.value)}
                       required
                     />
                   </div>
@@ -113,7 +144,7 @@ const Navigation = () => {
                       id="email"
                       placeholder="name@company.com"
                       value={email}
-                      onChange={event => setEmail(event.target.value)}
+                      onChange={(event) => setEmail(event.target.value)}
                       required
                     />
                   </div>
@@ -125,7 +156,7 @@ const Navigation = () => {
                       id="number"
                       placeholder="+27 065 742 0778"
                       value={number}
-                      onChange={event => setNumber(event.target.value)}
+                      onChange={(event) => setNumber(event.target.value)}
                       required
                     />
                   </div>
@@ -137,6 +168,8 @@ const Navigation = () => {
                       // Set minDate to today's date
                       minDate={new Date()}
                       maxDate={new Date(2027, 3, 30)}
+                      onChange={(event) => setDate(event.target.value)}
+                      required
                     />
                   </div>
 
@@ -164,7 +197,7 @@ const Navigation = () => {
       </div>
       <Navbar.Collapse>
         {links.map(
-          link =>
+          (link) =>
             link.href !== "/booking" && (
               <Navbar.Link key={link.id} href={link.href}>
                 {link.name}
@@ -173,7 +206,7 @@ const Navigation = () => {
         )}
       </Navbar.Collapse>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;
