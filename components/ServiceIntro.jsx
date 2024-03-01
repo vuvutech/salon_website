@@ -4,26 +4,28 @@ import Link from 'next/link';
 
 const ServiceIntro = ({ title, description, imageUrl, linkUrl }) => {
   return (
-    <div className="group relative bg-white dark:bg-teal-800 transition hover:z-[1] hover:shadow-2xl hover:shadow-teal-600/10">
+    <div className="group relative bg-white dark:bg-teal-950 transition hover:z-[1] hover:shadow-2xl hover:shadow-teal-600/10">
       <div className="relative space-y-8 py-12 p-8">
-        <img
+      <div className='w-24 h-24 bg-teal-100/50 rounded-full grid place-items-center place-content-center'>
+      <img
           src={imageUrl}
-          className="w-12"
-          width="512"
-          height="512"
+          className="w-20"
+          width="912"
+          height="912"
           alt="service illustration"
         />
+      </div>
 
         <div className="space-y-2">
           <h5 className="text-xl font-medium text-teal-700 dark:text-white transition group-hover:text-primary">
             {title}
           </h5>
-          <p className="text-sm text-teal-600 dark:text-teal-300 line-clamp-3 ">
+          <p className="text-sm text-gray-950 dark:text-teal-300 line-clamp-3 ">
             {description}
           </p>
         </div>
         <Link href={linkUrl ?? '/services'}
-          className="flex items-center justify-between group-hover:text-primary"
+          className="flex items-center justify-between group-hover:text-primary dark:text-white"
         >
           <span className="text-sm">Read more</span>
           <svg

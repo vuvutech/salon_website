@@ -58,28 +58,28 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border border-gray-100 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
+          <div className="mt-16 grid divide-x divide-y divide-teal-100 dark:divide-teal-700/15 overflow-hidden rounded-3xl border border-teal-100 dark:border-teal-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
             
             {/* Service intro */}
            { <ServiceIntro
               title="General Hair Services"
               description="More than just a cut. We offer a variety of services including scalp treatments, hair extensions, and styling consultations.."
-              imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
+              imageUrl="./hair-care.svg"
             />}
            { <ServiceIntro
               title="Hair Treatment"
               description="Revitalize and repair. Deep treatments address dryness, damage, and thinning, leaving your hair healthy and vibrant."
-              imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
-            />}
+              imageUrl="./hair-treatment.svg"
+              />}
            { <ServiceIntro
               title="Hair Styling"
               description="Create your perfect look. From sleek blowouts to intricate updos, our stylists will craft an ideal style for any occasion."
-              imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
-            />}
+              imageUrl="./hair-styling.svg"
+              />}
            { <ServiceIntro
               title="Standard Hair Care"
               description="Essential maintenance made easy. Our experienced stylists offer precision haircuts, trims, and washes to maintain healthy hair."
-              imageUrl="https://cdn-icons-png.flaticon.com/512/4341/4341139.png"
+              imageUrl="./standard.svg"
             />}
           </div>
         </div>
