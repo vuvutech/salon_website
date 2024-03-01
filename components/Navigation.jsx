@@ -52,31 +52,30 @@ const Navigation = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Ensure all required fields are present before sending data
+    // Ensure all required fields are present before sending data. Form validation on server side.
     if (!name || !email || !number || !date) {
       alert("Please fill in all required fields.");
       return;
     }
 
-    // Replace with your actual API endpoint and validation logic
     const formData = {
       name,
       email,
       phone: number, // Assuming "number" should be "phone"
       date,
-      details: "", // Add details if needed
     };
 
     try {
-      const response = await fetch("/api/booking", {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        access_key: "164ae991-9bcc-46da-852a-6befeb8310fd",
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        alert("Booking submitted successfully!");
         onCloseModal();
+        alert("Booking submitted successfully!");
       } else {
         const errorData = await response.json(); // Parse error message
         alert(`Error submitting booking: ${errorData.message}`); // Display specific error
@@ -88,7 +87,7 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar fluid>
+    <Navbar className="dark:bg-teal-950" fluid>
       <Navbar.Brand href="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Elsie Hair Salon
@@ -111,7 +110,8 @@ const Navigation = () => {
           </div>
 
           <Modal
-            className="max-h-[100vh]"
+          id="modal"
+            className="max-h-auto h-auto"
             show={openModal}
             size="md"
             onClose={onCloseModal}
@@ -119,7 +119,7 @@ const Navigation = () => {
           >
             <form className="flex flex-col gap-4 h-auto">
               <Modal.Header />
-              <Modal.Body>
+              <Modal.Body className="h-auto max-h-full">
                 <div className="space-y-3">
                   <h3 className="text-xl font-medium text-gray-900 dark:text-white">
                     Sign in to our platform
