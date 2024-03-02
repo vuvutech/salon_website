@@ -21,6 +21,7 @@ const Footer = () => {
             src="/hair-salon-1.jpg"
             alt="Elsie Hair Salon"
             fill="true"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             priority
           />
           {/* <img
@@ -122,7 +123,7 @@ const Footer = () => {
                   </p>
                   <ul className="mt-6 space-y-4 text-xs">
                     {services[0].services[3].services.map((service) => (
-                      <li class="normal-case" key={service.name}>
+                      <li className="normal-case" key={service.name}>
                         {service.name}
                       </li>
                     ))}
@@ -134,7 +135,7 @@ const Footer = () => {
                   </p>
                   <ul className="mt-6 space-y-4 text-xs">
                     {services[0].services[1].services.map((service) => (
-                      <li class="normal-case" key={service.name}>
+                      <li className="normal-case" key={service.name}>
                         {service.name}
                       </li>
                     ))}
@@ -146,7 +147,7 @@ const Footer = () => {
                   </p>
                   <ul className="mt-6 space-y-4 text-xs">
                     {services[0].services[2].services.map((service) => (
-                      <li class="normal-case" key={service.name}>
+                      <li className="normal-case" key={service.name}>
                         {service.name}
                       </li>
                     ))}
@@ -158,7 +159,7 @@ const Footer = () => {
                   </p>
                   <ul className="mt-6 space-y-4 text-xs">
                     {services[0].services[0].services.map((service) => (
-                      <li class="normal-case" key={service.name}>
+                      <li className="normal-case" key={service.name}>
                         {service.name}
                       </li>
                     ))}
