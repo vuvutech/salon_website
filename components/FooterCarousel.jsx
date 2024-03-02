@@ -49,70 +49,74 @@ const FooterCarousel = () => {
         shouldResetAutoplay
         showDots={false}
         sliderClass=""
-        slidesToSlide={2}
+        slidesToSlide={1}
         swipeable
       >
         <img
           src="../hair/men1.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women1.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women7.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women10.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women9.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women5.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/men2.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women1.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women7.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women44.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women9.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
         <img
           src="../hair/women5.jpg"
           alt="..."
-          className="rounded"
+          className="rounded-2xl"
         />
-
+        <img
+          src="../woman4.webp"
+          alt="..."
+          className="rounded-2xl"
+        />
 
       </Carousel>
     </>
