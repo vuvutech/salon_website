@@ -2,6 +2,12 @@
 import ReCAPTCHA from "react-google-recaptcha";
 import { verifyCaptcha } from "./ServerActions";
 import React, { useRef, useState } from "react";
+import dayjs from "dayjs";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import toast, { Toaster } from "react-hot-toast";
+import { useEffect } from 'react';
+
 
 import {
   Button,
@@ -26,6 +32,9 @@ export const links = [
 ];
 
 const Navigation = () => {
+  const format = "HH:mm";
+  const datePickerClass = "datePickerClass"; // Using the previously defined class
+
   const recaptchaRef = useRef(null);
   const [isVerified, setIsverified] = useState(false);
 
@@ -40,54 +49,91 @@ const Navigation = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
-  function onCloseModal() {
-    setOpenModal(false);
-    setEmail("");
-    setDate("");
-    setName("");
-    setNumber("");
-  }
+  let handleColor = (time) => {
+    return time.getHours() > 12 ? "text-success" : "text-error";
+  };
+
+  const handleChangeTime = (time) => {
+    // Parse the selected time using dayjs
+    const parsedTime = dayjs(time, format);
+    setTime(parsedTime);
+    console.log(time);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Ensure all required fields are present before sending data. Form validation on server side.
+    const formattedDate = dayjs(date).format("D MMMM YYYY, [time] h:mm a");
+
+    console.log(name, email, number, date);
     if (!name || !email || !number || !date) {
-      alert("Please fill in all required fields.");
+      toast.error("Please fill in all required fields.");
       return;
     }
 
+    // alert(access_key);
     const formData = {
       name,
       email,
-      phone: number, // Assuming "number" should be "phone"
-      date,
+      number,
+      date: formattedDate,
     };
 
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        access_key: "164ae991-9bcc-46da-852a-6befeb8310fd",
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        onCloseModal();
-        alert("Booking submitted successfully!");
-      } else {
-        const errorData = await response.json(); // Parse error message
-        alert(`Error submitting booking: ${errorData.message}`); // Display specific error
-      }
-    } catch (error) {
-      console.error("Error submitting booking:", error);
-      alert("An unexpected error occurred. Please try again later.");
-    }
+    // https://getform.io/f/nbdeerda
+    fetch("https://formcarry.com/s/phqbeIDYVuk", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.code === 200) {
+          setSubmitted(true);
+        } else {
+          setError(res.message);
+        }
+      })
+      .catch((error) => setError(error));
   };
+
+  useEffect(() => {
+    if (submitted) {
+      // Show success toast
+      onCloseModal();
+      toast.success("Request Received. We shall be in Touch shortly!");
+      setTimeout(() => window.location.reload(), 3000);
+
+
+    }
+    
+    if (error) {
+      // Show error toast
+      onCloseModal();
+      toast.error("Submission Failure");
+      setTimeout(() => window.location.reload(), 3000);
+
+    }
+  }, [submitted, error]);
+  
+
+  function onCloseModal() {
+    setOpenModal(false);
+    setName("");
+    setEmail("");
+    setNumber("");
+    setDate("");
+  }
 
   return (
     <Navbar className="dark:bg-teal-950" fluid>
+      <Toaster position="top-right" reverseOrder={false} />
       <Navbar.Brand href="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Elsie Hair Salon
@@ -110,20 +156,24 @@ const Navigation = () => {
           </div>
 
           <Modal
-          id="modal"
+            id="modal"
             className="max-h-auto h-auto"
             show={openModal}
-            size="md"
+            size="xl"
             onClose={onCloseModal}
             popup
           >
-            <form className="flex flex-col gap-4 h-auto">
-              <Modal.Header />
-              <Modal.Body className="h-auto max-h-full">
-                <div className="space-y-3">
-                  <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-                    Sign in to our platform
-                  </h3>
+            <Modal.Header />
+            <Modal.Body className="h-auto max-h-full">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-4 h-auto"
+                encType="multi/part/form-data"
+              >
+                <div className="space-y-2">
+                  <h5 className="text-sm font-small text-gray-900 dark:text-white">
+                    Book Appointment
+                  </h5>
                   <div>
                     <div className="mb-2 block">
                       <Label htmlFor="name" value="Your Name" />
@@ -160,28 +210,36 @@ const Navigation = () => {
                       required
                     />
                   </div>
-                  <div className="">
-                    <div className="mb-2 block">
-                      <Label htmlFor="date" value="Choose Date" />
+                  <div className=" grid grid-cols-1">
+                    <div>
+                      <div className="mb-2 block">
+                        <Label htmlFor="date" value="Choose Date & Time" />
+                      </div>
+                      <DatePicker
+                        showIcon
+                        selected={date}
+                        onChange={(date) => setDate(date)}
+                        timeClassName={handleColor}
+                        showTimeSelect
+                        isClearable
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        timeCaption="time"
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        className={datePickerClass}
+                      />
                     </div>
-                    <Datepicker
-                      // Set minDate to today's date
-                      minDate={new Date()}
-                      maxDate={new Date(2027, 3, 30)}
-                      onChange={(event) => setDate(event.target.value)}
-                      required
-                    />
                   </div>
 
                   <div>
-                    <ReCAPTCHA
+                    {/* <ReCAPTCHA
                       sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                       ref={recaptchaRef}
                       onChange={handleCaptchaSubmission}
-                    />
+                    /> */}
 
                     <Button
-                      disabled={!isVerified}
+                      // disabled={!isVerified}
                       className="w-full"
                       type="submit"
                     >
@@ -189,8 +247,8 @@ const Navigation = () => {
                     </Button>
                   </div>
                 </div>
-              </Modal.Body>
-            </form>
+              </form>
+            </Modal.Body>
           </Modal>
         </div>
         <DarkThemeToggle />
@@ -199,7 +257,11 @@ const Navigation = () => {
         {links.map(
           (link) =>
             link.href !== "/booking" && (
-              <Navbar.Link key={link.id} href={link.href} className="dark:text-white dark:hover:text-teal-300 font-bold" >
+              <Navbar.Link
+                key={link.id}
+                href={link.href}
+                className="dark:text-white dark:hover:text-teal-300 font-bold"
+              >
                 {link.name}
               </Navbar.Link>
             )

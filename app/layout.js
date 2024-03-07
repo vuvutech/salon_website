@@ -10,12 +10,30 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
-  title: "Elsie Hair Salon",
+  metadataBase: new URL('https://www.elsiehairsalon.co.za'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US'
+    },
+  },
+  formatDetection: {
+    email: "info@ElsieHairSalon.co.za",
+    address: "7 Deodar St, Mayberry Park, Alberton, 1481, South Africa",
+    telephone: "+27 633 817 805",
+  },
+  title: {
+    default: 'Elsie Hair Salon',
+  },
   description:
     "Elsie Hair Salon in sandton, Johannesburg offers a wide range of hair services, including blowouts, weaves, braids, treatments, and more.",
   keywords: keywords.join(", "),
   siteName: "Elsie Hair Salon",
-  author: "Pius Opoku-Fofie",
+  authors: [
+    { name: 'Alexander Darko'},
+    { name: 'Pius Opoku-Fofie'}
+  ],
+
   image: "../public/hair-tools.jpg",
   url: "https://www.elsiehairsalon.co.za",
   type: "website",
@@ -43,19 +61,13 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <Head>
           <ThemeModeScript />
-          <link
-            rel="sitemap"
-            type="application/xml"
-            title="Sitemap"
-            href="/sitemap.xml"
-          />
         </Head>
         <body className={inter.className}>
           <Navigation />
           {children}
           <Footer />
         </body>
-
+        {/* Wrap Google analytics this in cookie banner */}
         <GoogleAnalytics gtmId="G-8SB8D3YWB1" />
       </html>
     </Flowbite>

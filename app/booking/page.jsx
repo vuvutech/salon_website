@@ -1,16 +1,18 @@
 
+'use client'
+ 
+import { useRouter } from 'next/navigation'
+
 import React from 'react'
 import BookingForm from '@/components/BookingForm'
 
 const Booking = () => {
+  const router = useRouter()
+ 
   return (
-    <div className="">
-      <div>Booking Us</div>
-
-
-
-    </div>
-
+    <button type="button" onClick={() => router.push('/about')}>
+      About
+    </button>
   )
 }
 
