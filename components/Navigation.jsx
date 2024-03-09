@@ -109,8 +109,6 @@ const Navigation = () => {
       onCloseModal();
       toast.success("Request Received. We shall be in Touch shortly!");
       setTimeout(() => window.location.reload(), 3000);
-
-
     }
     
     if (error) {
