@@ -3,7 +3,6 @@ import Jumbotron from "@/components/Jumbotron";
 import JumbotronFlipped from "@/components/JumbotronFlipped";
 import ServiceItem from "@/components/ServiceItem";
 
-
 const Services = () => {
   return (
     <>
@@ -63,7 +62,6 @@ const Services = () => {
         paragraph="It is the mission of every employee to insure that each time you visit our salon we will exceed your expectations in Customer service, Professionalism, and Quality and Consistency of services."
         images={{
           background: "./jumbotron-bg2.jpg",
-          overlay: "./shape-08.png",
           column1: "../woman2-gray1.png", //// Add actual image URL
           column2: "../woman2-gray1.png", //// Add actual image URL
           column3: "../woman2-gray1.png", //// Add actual image URL

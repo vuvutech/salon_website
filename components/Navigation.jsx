@@ -1,12 +1,13 @@
 "use client";
-import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import GoogleCaptchaWrapper from "@/app/google-captcha-wrapper";
 import React, { useRef, useState } from "react";
 import dayjs from "dayjs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { AiOutlineLoading } from 'react-icons/ai';
+
 
 import {
   Button,
@@ -37,6 +38,7 @@ const Navigation = () => {
   const recaptchaRef = useRef(null);
   const [isVerified, setIsverified] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   const [openModal, setOpenModal] = useState(false);
   const [name, setName] = useState("");
@@ -45,6 +47,13 @@ const Navigation = () => {
   const [date, setDate] = useState(new Date());
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  const handleCaptchaSubmission = (token) => {
+    // console.log("reCAPTCHA verified:", token);
+    setShowButton(true);
+    return; // Assuming verification is successful (replace with actual validation)
+    // Send the token to your server for verification
+  };
 
   let handleColor = (time) => {
     return time.getHours() > 12 ? "text-success" : "text-error";
@@ -81,7 +90,7 @@ const Navigation = () => {
       .then((response) => {
         if (response.status === 200) {
           setSubmitted(true);
-        } else if (response.status === 500)  {
+        } else if (response.status === 500) {
           setError(true);
         }
       })
@@ -214,20 +223,28 @@ const Navigation = () => {
                     </div>
                   </div>
 
-                  <div>
-                    {/* <ReCAPTCHA
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-                      ref={recaptchaRef}
-                      onChange={handleCaptchaSubmission}
-                    /> */}
-
-                    <Button
-                      disabled={isDisabled}
-                      className="w-full"
-                      type="submit"
-                    >
-                      Submit
-                    </Button>
+                  <div className="flex flex-col space-y-2">
+                    <div>
+                      <ReCAPTCHA
+                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                        ref={recaptchaRef}
+                        onChange={handleCaptchaSubmission}
+                      />
+                    </div>
+                    <div>
+                    {showButton ? ( 
+                        <Button
+                          disabled={isDisabled}
+                          className="w-full"
+                          type="submit"
+                        >
+                          Submit
+                        </Button>
+                      ) : (
+                        <Button disabled size="md" isProcessing processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}>
+Verifying...                      </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </form>

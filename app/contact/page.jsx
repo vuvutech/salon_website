@@ -1,7 +1,7 @@
 import React from "react";
 import Jumbotron from "@/components/Jumbotron";
 import ChopBox from "@/components/ChopBox";
-import { MapPin } from "lucide-react";
+import { MapPin,Check } from "lucide-react";
 
 const Contact = () => {
   return (
@@ -34,20 +34,7 @@ const Contact = () => {
 
                   <li className="flex space-x-3">
                     <span className="size-5 flex justify-center items-center rounded-full bg-teal-500 text-white dark:bg-blue-800/30 dark:text-blue-500">
-                      <svg
-                        className="flex-shrink-0 size-3.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
+                    <Check />
                     </span>
                     <span className="text-white">
                       7 Deodar St, Mayberry Park, Alberton, 1481, South Africa
@@ -55,20 +42,7 @@ const Contact = () => {
                   </li>
                   <li className="flex space-x-3">
                     <span className="size-5 flex justify-center items-center rounded-full bg-teal-500 text-white dark:bg-blue-800/30 dark:text-blue-500">
-                      <svg
-                        className="flex-shrink-0 size-3.5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
+                    <Check />
                     </span>
                     <span className="text-white">
                       28 Abel Moller St, Brackenhurst, Alberton, 1448, South
