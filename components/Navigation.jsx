@@ -9,6 +9,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { AiOutlineLoading } from 'react-icons/ai';
 
 
+
 import {
   Button,
   Navbar,
@@ -32,6 +33,8 @@ export const links = [
 ];
 
 const Navigation = () => {
+  const siteurl = process.env.NEXT_PUBLIC_SITE_URL
+  // console.log(siteurl);
   const format = "HH:mm";
   const datePickerClass = "datePickerClass"; // Using the previously defined class
 
@@ -71,6 +74,7 @@ const Navigation = () => {
       return;
     }
 
+
     const data = {
       name,
       email,
@@ -78,7 +82,7 @@ const Navigation = () => {
       date: formattedDate,
     };
     // https://getform.io/f/nbdeerda
-    fetch("http://localhost:3000/api", {
+    fetch(`${siteurl}/api`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

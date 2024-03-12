@@ -60,9 +60,7 @@ export default function RootLayout({ children }) {
   return (
     <Flowbite>
       <html lang="en">
-        <Head>
-          <ThemeModeScript />
-        </Head>
+
         <body className={inter.className}>
           <Navigation />
           {children}
