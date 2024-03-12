@@ -1,13 +1,12 @@
 "use client";
-import ReCAPTCHA from "react-google-recaptcha";
-import { verifyCaptcha } from "./ServerActions";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import GoogleCaptchaWrapper from "@/app/google-captcha-wrapper";
 import React, { useRef, useState } from "react";
 import dayjs from "dayjs";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import toast, { Toaster } from "react-hot-toast";
-import { useEffect } from 'react';
-
+import { useEffect } from "react";
 
 import {
   Button,
@@ -37,13 +36,7 @@ const Navigation = () => {
 
   const recaptchaRef = useRef(null);
   const [isVerified, setIsverified] = useState(false);
-
-  async function handleCaptchaSubmission(token) {
-    // Server function to verify captcha
-    await verifyCaptcha(token)
-      .then(() => setIsverified(true))
-      .catch(() => setIsverified(false));
-  }
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const [openModal, setOpenModal] = useState(false);
   const [name, setName] = useState("");
@@ -57,50 +50,44 @@ const Navigation = () => {
     return time.getHours() > 12 ? "text-success" : "text-error";
   };
 
-  const handleChangeTime = (time) => {
-    // Parse the selected time using dayjs
-    const parsedTime = dayjs(time, format);
-    setTime(parsedTime);
-    console.log(time);
-  };
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsDisabled(true);
 
     // Ensure all required fields are present before sending data. Form validation on server side.
     const formattedDate = dayjs(date).format("D MMMM YYYY, [time] h:mm a");
 
-    console.log(name, email, number, date);
     if (!name || !email || !number || !date) {
       toast.error("Please fill in all required fields.");
       return;
     }
 
-    // alert(access_key);
-    const formData = {
+    const data = {
       name,
       email,
       number,
       date: formattedDate,
     };
-
     // https://getform.io/f/nbdeerda
-    fetch("https://formcarry.com/s/phqbeIDYVuk", {
+    fetch("http://localhost:3000/api", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(data),
     })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.code === 200) {
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 200) {
           setSubmitted(true);
-        } else {
-          setError(res.message);
+        } else if (response.status === 500)  {
+          setError(true);
         }
       })
-      .catch((error) => setError(error));
+      .catch((error) => {
+        console.log("An error occurred while sending your request");
+      });
   };
 
   useEffect(() => {
@@ -110,16 +97,14 @@ const Navigation = () => {
       toast.success("Request Received. We shall be in Touch shortly!");
       setTimeout(() => window.location.reload(), 3000);
     }
-    
+
     if (error) {
       // Show error toast
       onCloseModal();
       toast.error("Submission Failure");
-      setTimeout(() => window.location.reload(), 3000);
-
+      // setTimeout(() => window.location.reload(), 3000);
     }
   }, [submitted, error]);
-  
 
   function onCloseModal() {
     setOpenModal(false);
@@ -237,7 +222,7 @@ const Navigation = () => {
                     /> */}
 
                     <Button
-                      // disabled={!isVerified}
+                      disabled={isDisabled}
                       className="w-full"
                       type="submit"
                     >

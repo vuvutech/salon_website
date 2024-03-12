@@ -4,7 +4,6 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ThemeModeScript, DarkThemeToggle, Flowbite } from "flowbite-react";
-import Head from "next/head";
 import { keywords } from "@/components/SEO"; // Assuming SEO.js is in components folder
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -59,9 +58,9 @@ export default function RootLayout({ children }) {
   return (
     <Flowbite>
       <html lang="en">
-        <Head>
+        {/* <Head>
           <ThemeModeScript />
-        </Head>
+        </Head> */}
         <body className={inter.className}>
           <Navigation />
           {children}
