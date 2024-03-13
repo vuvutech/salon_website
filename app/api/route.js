@@ -1,8 +1,12 @@
+"use server"
 import { NextResponse, NextRequest } from "next/server";
 const nodemailer = require("nodemailer");
 
 // Handles POST requests to /api
-
+export async function GET(req) {
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  return NextResponse.json({ siteKey });
+}
 export async function POST(req) {
   const password = process.env.REAL_EMAIL_PASSWORD;
   const emailFrom = process.env.NEXT_PUBLIC_FROM_EMAIL;
@@ -17,8 +21,8 @@ export async function POST(req) {
       user: "api",
       pass: `${password}`,
     },
-    debug: true,
-    logger: true
+    // debug: true,
+    // logger: true
   });
 
   try {

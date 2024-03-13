@@ -6,9 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import toast, { Toaster } from "react-hot-toast";
 import { useEffect } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { AiOutlineLoading } from 'react-icons/ai';
-
-
+import { AiOutlineLoading } from "react-icons/ai";
 
 import {
   Button,
@@ -33,8 +31,10 @@ export const links = [
 ];
 
 const Navigation = () => {
-  const siteurl = process.env.NEXT_PUBLIC_SITE_URL
-  // console.log(siteurl);
+  const siteurl = process.env.NEXT_PUBLIC_SITE_URL;
+  const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  // console.log(sitekey);
+
   const format = "HH:mm";
   const datePickerClass = "datePickerClass"; // Using the previously defined class
 
@@ -73,7 +73,6 @@ const Navigation = () => {
       toast.error("Please fill in all required fields.");
       return;
     }
-
 
     const data = {
       name,
@@ -230,13 +229,13 @@ const Navigation = () => {
                   <div className="flex flex-col space-y-2">
                     <div>
                       <ReCAPTCHA
-                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+                        sitekey="6LcZ7ZYpAAAAAN2ExYQkPwtpAqSqd3J8DCA9NebH"
                         ref={recaptchaRef}
                         onChange={handleCaptchaSubmission}
                       />
                     </div>
                     <div>
-                    {showButton ? ( 
+                      {showButton ? (
                         <Button
                           disabled={isDisabled}
                           className="w-full"
@@ -245,8 +244,16 @@ const Navigation = () => {
                           Submit
                         </Button>
                       ) : (
-                        <Button disabled size="md" isProcessing processingSpinner={<AiOutlineLoading className="h-6 w-6 animate-spin" />}>
-Verifying...                      </Button>
+                        <Button
+                          disabled
+                          size="md"
+                          isProcessing
+                          processingSpinner={
+                            <AiOutlineLoading className="h-6 w-6 animate-spin" />
+                          }
+                        >
+                          Verifying...{" "}
+                        </Button>
                       )}
                     </div>
                   </div>
