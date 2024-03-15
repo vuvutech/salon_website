@@ -4,8 +4,13 @@ const nodemailer = require("nodemailer");
 
 // Handles POST requests to /api
 export async function GET(req) {
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-  return NextResponse.json({ siteKey });
+  // const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  return NextResponse.json(
+    { 
+      site: "Elsie Hair Salon", 
+      address: "28 Abel Moller St, Brackenhurst, Alberton, 1448, South Africa",
+      website: "https://www.ElsieHairSalon.co.za" 
+    });
 }
 export async function POST(req) {
   const password = process.env.REAL_EMAIL_PASSWORD;
