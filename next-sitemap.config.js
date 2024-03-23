@@ -5,6 +5,6 @@ module.exports = {
   sitemapSize: 7000,
   priority: 0.7,
   changefreq: "weekly",
+  exclude: ['/gallery', '/career', '/booking', '/api'],
 };
 
-// exclude: ["/path-to-exclude"],
