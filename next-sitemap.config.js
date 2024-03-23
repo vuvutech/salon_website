@@ -6,6 +6,6 @@ module.exports = {
   priority: 0.7,
   changefreq: "weekly",
   exclude: ['/gallery', '/career', '/booking', '/api'],
-  additionalPaths: [], // Add this line to ensure all paths are included in the sitemap
+  generateIndexSitemap: false
 };
 
