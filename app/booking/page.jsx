@@ -1,7 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { serviceData as services } from "@/components/ServiceList";
 import { DatePicker, Space } from "antd";
+import ReCAPTCHA from "react-google-recaptcha";
+import { AiOutlineLoading } from "react-icons/ai";
+import toast, { Toaster } from "react-hot-toast";
 
 import {
   Button,
@@ -14,17 +17,24 @@ import {
 import { HiOutlineArrowRight } from "react-icons/hi";
 
 export default function BookingForm() {
+  const siteurl = process.env.NEXT_PUBLIC_SITE_URL;
+  const sitekey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  const recaptchaRef = useRef(null);
 
   const dateClasses = `block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 p-2.5 text-sm rounded-lg`;
 
   const onDateSelect = (value, dateString) => {
-
     setFormData((prevData) => ({
       ...prevData,
       date: dateString, // Update formData.date with the selected date string
     }));
   };
 
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+  const [showButton, setShowButton] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,6 +43,12 @@ export default function BookingForm() {
     selectedServices: [], // Array to store selected services
   });
 
+  const handleCaptchaSubmission = (token) => {
+    // console.log("reCAPTCHA verified:", token);
+    setShowButton(true);
+    return; // Assuming verification is successful (replace with actual validation)
+    // Send the token to your server for verification
+  };
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
@@ -59,30 +75,36 @@ export default function BookingForm() {
   };
 
   // Inside the component
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(`${siteurl}/api`);
+  // }, [formData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api", {
+      // Show loading indicator and handle the form submission
+      await toast.promise(fetch(`${siteurl}/api`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+      }), {
+        loading: 'Submitting Your Request...',
+        success: () => {
+          // Reload the page after a successful form submission
+          setTimeout(() => window.location.reload(), 3000);
+          return 'Form Submitted Successfully!';
+        },
+        error: 'Error submitting Request.',
       });
-      if (response.ok) {
-        console.log("Form submitted successfully!");
-      } else {
-        console.error("Failed to submit form");
-      }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      toast.error("Error occurred while submitting the form");
+      // console.error("Error submitting form:", error);
     }
   };
-
+  
+  
   return (
     <section className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto relative bg-teal-100 dark:bg-teal-950">
       <div className="rounded-3xl md:p-8 p-4 border border-spacing-2 border-teal-200/95 dark:border-teal-200/15  ">
@@ -92,7 +114,9 @@ export default function BookingForm() {
         >
           <div className="space-y-3">
             <div>
-              <label className="dark:text-white font-bold" htmlFor="name">Your Name:</label>
+              <label className="dark:text-white font-bold" htmlFor="name">
+                Your Name:
+              </label>
               <TextInput
                 type="name"
                 id="name"
@@ -101,11 +125,13 @@ export default function BookingForm() {
                 onChange={handleChange}
                 placeholder="What Should we call you...."
                 required
-                />
+              />
             </div>
 
             <div>
-              <label className="dark:text-white font-bold" htmlFor="email">Email:</label>
+              <label className="dark:text-white font-bold" htmlFor="email">
+                Email:
+              </label>
               <TextInput
                 type="email"
                 id="email"
@@ -117,7 +143,9 @@ export default function BookingForm() {
               />
             </div>
             <div>
-              <label className="dark:text-white font-bold" htmlFor="number">Telephone:</label>
+              <label className="dark:text-white font-bold" htmlFor="number">
+                Telephone:
+              </label>
               <TextInput
                 type="tel"
                 id="number"
@@ -129,9 +157,16 @@ export default function BookingForm() {
               />
             </div>
             <div>
-              <label className="dark:text-white font-bold" htmlFor="date">Date:</label>
-    <DatePicker className={dateClasses} allowClear showTime onChange={onDateSelect} placeholder={'Select Date and Time'} />
-
+              <label className="dark:text-white font-bold" htmlFor="date">
+                Date:
+              </label>
+              <DatePicker
+                className={dateClasses}
+                allowClear
+                showTime
+                onChange={onDateSelect}
+                placeholder={"Select Date and Time"}
+              />
 
               {/*               <Datepicker
                 value={formData.date}
@@ -169,7 +204,12 @@ export default function BookingForm() {
                           </svg>
                         </div>
                         <div className=" text-xs font-normal px-4">
-                          <Label className="dark:text-white font-bold" htmlFor={service.id}>{service.name}</Label>
+                          <Label
+                            className="dark:text-white font-bold"
+                            htmlFor={service.id}
+                          >
+                            {service.name}
+                          </Label>
                         </div>
                         <div>
                           <Checkbox
@@ -184,24 +224,46 @@ export default function BookingForm() {
                         </div>
                       </div>
                     </div>
-                    // <div className="flex gap-2 p-4 " key={service.id}>
-                    //   <Checkbox
-                    //     id={service.id}
-                    //     name={`service-${category.name}`}
-                    //     value={service.name}
-                    //     onChange={handleChange}
-                    //     checked={formData.selectedServices.includes(service.name)}
-                    //     />
-
-                    //   <Label className="dark:text-white font-bold" htmlFor={service.id}>{service.name}</Label>
-                    // </div>
                   ))}
                 </fieldset>
               ))}
             </div>
           </div>
 
-          <button type="submit">Submit</button>
+          <div className="space-y-2 flex flex-col
+           justify-center items-left pt-5">
+            <div     className="w-full  flex justify-center text-center  ">
+              <ReCAPTCHA
+                className="w-full"
+                sitekey={sitekey}
+                ref={recaptchaRef}
+                onChange={handleCaptchaSubmission}
+              />
+            </div>
+            <div className="text-center flex justify-center items-center">
+              {showButton ? (
+                <Button
+                  disabled={isDisabled}
+                  className="w-full  flex justify-center text-center  "
+                  type="submit"
+                >
+                  Submit Request
+                </Button>
+              ) : (
+                <Button
+                  className="w-full  flex justify-center text-center  "
+                  disabled
+                  size="md"
+                  isProcessing
+                  processingSpinner={
+                    <AiOutlineLoading className="h-6 w-6 animate-spin" />
+                  }
+                >
+                  Verifying...{" "}
+                </Button>
+              )}
+            </div>
+          </div>
         </form>
       </div>
     </section>

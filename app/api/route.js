@@ -39,15 +39,10 @@ export async function POST(req) {
             <p>Name: ${data.name} </p>
             <p>Email: ${data.email}</p>
             <p>Date: ${data.date} </p>
-            <div>
-            ##### Selected Services #####
+            <p>Services:</p>
             <ul>
-            ${data.selectedServices.map((service)=>(
-             <li key={service.id}>{service.name}</li> 
-            ))}
+              ${data.selectedServices.map(service => `<li>${service}</li>`).join('')}
             </ul>
-            #############################
-            </div>
             <p>Number: ${data.number} </p><br />
             <p>Best regards,</p>
             <p>Elsie Hair Salon</p>

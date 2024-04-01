@@ -7,8 +7,20 @@
   font-family: "montserrat", Verdana, Geneva, Tahoma, sans-serif;
 }
 
+ant-btn ant-btn-primary ant-btn-sm   {
+@apply dark:bg-teal-950 dark:text-white;
+}
+.ant-picker-panel-layout {
+  @apply dark:bg-teal-800 dark:text-white;
+}
 .ant-btn-primary {
-  @apply bg-teal-950;
+  @apply bg-teal-700;
+}
+.ant-picker-footer{
+  @apply bg-teal-500;
+}
+.ant-picker-header-view {
+  @apply dark:bg-teal-950 dark:text-white;
 }
 
 .loader {
