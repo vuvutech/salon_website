@@ -1,16 +1,15 @@
-"use server"
+"use server";
 import { NextResponse, NextRequest } from "next/server";
 const nodemailer = require("nodemailer");
 
 // Handles POST requests to /api
 export async function GET(req) {
   // const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-  return NextResponse.json(
-    { 
-      site: "Elsie Hair Salon", 
-      address: "28 Abel Moller St, Brackenhurst, Alberton, 1448, South Africa",
-      website: "https://www.ElsieHairSalon.co.za" 
-    });
+  return NextResponse.json({
+    site: "Elsie Hair Salon",
+    address: "28 Abel Moller St, Brackenhurst, Alberton, 1448, South Africa",
+    website: "https://www.ElsieHairSalon.co.za",
+  });
 }
 export async function POST(req) {
   const password = process.env.REAL_EMAIL_PASSWORD;
@@ -40,6 +39,10 @@ export async function POST(req) {
             <p>Name: ${data.name} </p>
             <p>Email: ${data.email}</p>
             <p>Date: ${data.date} </p>
+            <p>Services:</p>
+            <ul>
+              ${data.selectedServices.map(service => `<li>${service}</li>`).join('')}
+            </ul>
             <p>Number: ${data.number} </p><br />
             <p>Best regards,</p>
             <p>Elsie Hair Salon</p>
