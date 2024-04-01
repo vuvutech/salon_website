@@ -25,12 +25,12 @@ export const links = [
 
 const Navigation = () => {
   return (
-    <Navbar className="dark:bg-teal-950" fluid>
+    <Navbar className="dark:bg-teal-950 border-b dark:border-teal-700/25 " fluid>
       <Toaster position="top-right" reverseOrder={false} />
       <Navbar.Brand href="/">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           <span className="leading-tight ">Elsie Hair Salon</span>
-          <span className="text-xs">&trade;</span>
+          <span className="font-['poppins'] text-gray-400 ">&trade;</span>
         </span>
       </Navbar.Brand>
       <div className="flex items-center md:order-2 gap-x-2">
