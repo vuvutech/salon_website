@@ -7,6 +7,10 @@
   font-family: "montserrat", Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.ant-btn-primary {
+  @apply bg-teal-950;
+}
+
 .loader {
   height: 4px;
   width: 130px;
